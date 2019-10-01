@@ -34,20 +34,20 @@ As of this writing I don't have a final destination for the contents of the /cod
   href: build.md
 - name: Change Infrastructure
   href: change.md
-- name: Destroy Infrastructure
-  href: destroy.md
 - name: Resource Dependencies
   href: dependencies.md
-- name: Provision
-  href: provision.md
 - name: Input Variables
   href: variables.md
 - name: Output Variables
   href: outputs.md
+- name: Provision
+  href: provision.md
 - name: Modules
   href: modules.md
 - name: Remote State Storage
   href: remote.md
+- name: Destroy Infrastructure
+  href: destroy.md  
 - name: Next Steps
   href: next-steps.md
   ```
