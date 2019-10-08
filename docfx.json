@@ -23,7 +23,11 @@
         "_disableToc": false,
         "_disableNavbar": false,
         "_disableBreadcrumb": false,
-        "_enableNewTab": true
+        "_enableNewTab": true,
+        "_gitContribute": {
+          "repo": "https://github.com/GMinchAQ/tfgsaz",
+          "branch": "public"
+        }
     },
     "fileMetadataFiles": [],
     "template": [

@@ -1,6 +1,7 @@
-# Getting Started with Terraform on Azure
+# Getting Started with Terraform v.12 on Azure
 
-This is the sooper-secret preview site for the updated Azure guide. This version covers Terraform v0.12.5 and azurerm v1.32. Samples were tested on Azure Cloud Shell, and on Azure VMs Ubuntu 18.04. VMs have Terraform and Azure CLI installed. 
+This is the preview site for the updated Getting Started - Azure track. This version covers Terraform v0.12.9 and azurerm v1.32. Samples were tested on Azure Cloud Shell. 
 
-Sorry, not connected to github yet, so no "edit this page" links. Coming soon! 
+To edit the pages or to leave comments, click the "Improve this Doc" link on the page. That will take you to the repo in the Public branch. Make your changes, then submit a PR. 
 
+The companion code 

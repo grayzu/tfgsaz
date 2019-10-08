@@ -9,8 +9,7 @@ description: |-
   Parameterize your configuration with input variables.
 ---
 
-You now have enough Terraform knowledge to create useful
-configurations, but we're still hard-coding most values. To become truly shareable and version-controlled, we need to parameterize the configurations. This lesson introduces input variables as a way to do this.
+You now have enough Terraform knowledge to create useful configurations, but we're still hard-coding most values. To become truly shareable and version-controlled, we need to parameterize the configurations. This lesson introduces input variables as a way to do this.
 
 ## Defining Variables
 
@@ -168,7 +167,7 @@ resource "azurerm_virtual_machine" "vm" {
 
 ## Maps
 
-A \*_map_ value is a lookup table of string name = value pairs. We are going to use a map variable to specify tags for the resources we create in Azure. [Resource tags](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-using-tags) store metadata for the resource. Our `variables.tf` contains two maps, one for tags, and one for sku.
+A _map_ value is a lookup table of string name = value pairs. We are going to use a map variable to specify tags for the resources we create in Azure. [Resource tags](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-using-tags) store metadata for the resource. Our `variables.tf` contains two maps, one for tags, and one for sku.
 
 ```hcl
 variable "tags" {
