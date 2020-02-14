@@ -66,14 +66,14 @@ provider "azurerm" {
 
 ## Resources
 
-A **resource** block defines the desired state for a given resource  withinm the infrastructure. A resource can be a physical component such
+A **resource** block defines the desired state for a given resource within the infrastructure. A resource can be a physical component such
 as a network interface, or it can be a logical resource such as
 an application.
 
 A resource block has two string parameters before opening the block:
 the resource **type** (first parameter) and the resource **name** (second parameter). The combination of the type and name must be unique in the configuration.
 
-The following example uses a resource block to provision a new Azure **resource group**. A resource group is a fundamental object in the [Azure Resource Manager](https://docs.microsoftcom/en-us/azure/azure-resource-manager/resource-group-overview) (ARM) deployment model, and it is required to create, modify, or destroy infrastructure in ARM. A configuration can create a new resource group or use an existing group, and often does both.
+The following example uses a resource block to provision a new Azure **resource group**. A resource group is a fundamental object in the [Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal) (ARM) deployment model, and it is required to create, modify, or destroy infrastructure in ARM. A configuration can create a new resource group or use an existing group, and often does both.
 
 ```hcl
 resource "azurerm_resource_group" "rg" {
