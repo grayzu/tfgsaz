@@ -128,7 +128,7 @@ You can inspect the current state using [**terraform show**](https://www.terrafo
 $ terraform show
 # azurerm_resource_group.rg:
 resource "azurerm_resource_group" "rg" {
-    id       = "/subscriptions/c5a42fec-6a86-43df-866b-7a6845daaa98/resourceGroups/myTFResourceGroup"
+    id       = "/subscriptions/<subscription-id>/resourceGroups/myTFResourceGroup"
     location = "westus"
     name     = "myTFResourceGroup"
     tags     = {}
