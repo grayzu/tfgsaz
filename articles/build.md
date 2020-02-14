@@ -126,11 +126,13 @@ You can inspect the current state using [**terraform show**](https://www.terrafo
 
 ```shell
 $ terraform show
-id       = /subscriptions/<subscription id>/resourceGroups/myTFResourceGroup
-location = westus2
-name     = myTFResourceGroup
-tags.%   = 0
-
+# azurerm_resource_group.rg:
+resource "azurerm_resource_group" "rg" {
+    id       = "/subscriptions/c5a42fec-6a86-43df-866b-7a6845daaa98/resourceGroups/myTFResourceGroup"
+    location = "westus"
+    name     = "myTFResourceGroup"
+    tags     = {}
+}
 ```
 
 In this example, the subscription id was displayed, but for the purposes of documentation and security, it has been replaced with `<subscription id>`. 
