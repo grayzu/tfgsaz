@@ -34,11 +34,12 @@ Terraform will perform the following actions:
 
   # azurerm_resource_group.rg will be destroyed
   - resource "azurerm_resource_group" "rg" {
-      - id       = "/subscriptions/<subscription id>/resourceGroups/myTFResourceGroup" -> null
-      - location = "eastus" -> null
+      - id       = "/subscriptions/c5a42fec-6a86-43df-866b-7a6845daaa98/resourceGroups/myTFResourceGroup" -> null
+      - location = "westus" -> null
       - name     = "myTFResourceGroup" -> null
       - tags     = {
-          - "environment" = "TF sandbox"
+          - "Environment" = "Terraform Getting Started"
+          - "Team"        = "DevOps"
         } -> null
     }
 
