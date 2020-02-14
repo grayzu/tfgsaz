@@ -30,10 +30,11 @@ Edit the `azurerm_resource_group` resource in your configuration and add the tag
 ```hcl
 resource "azurerm_resource_group" "rg" {
     name     = "myTFResourceGroup"
-    location = "eastus"
+    location = "westus"
 
-    tags {
-        environment = "TF sandbox"
+    tags = {
+        Environment = "Terraform Getting Started"
+        Team = "DevOps"   
     }
 }
 ```
@@ -59,11 +60,12 @@ Terraform will perform the following actions:
 
   # azurerm_resource_group.rg will be updated in-place
   ~ resource "azurerm_resource_group" "rg" {
-        id       = "/subscriptions/159f2485-ef68-428f-a04b-4339d9503d67/resourceGroups/myTFResourceGroup"
-        location = "eastus"
+        id       = "/subscriptions/<subscription-id>/resourceGroups/myTFResourceGroup"
+        location = "westus"
         name     = "myTFResourceGroup"
       ~ tags     = {
-          + "environment" = "TF sandbox"
+          + "Environment" = "Terraform Getting Started"
+          + "Team" = "DevOps" 
         }
     }
 
@@ -107,11 +109,12 @@ You can use `terraform show` again to see the new values associated with this re
 $ terraform show
 # azurerm_resource_group.rg:
 resource "azurerm_resource_group" "rg" {
-    id       = "/subscriptions/<subscription id>/resourceGroups/myTFResourceGroup"
-    location = "eastus"
+    id       = "/subscriptions/<subscription-id>/resourceGroups/myTFResourceGroup"
+    location = "westus"
     name     = "myTFResourceGroup"
     tags     = {
-        "environment" = "TF sandbox"
+        "Environment" = "Terraform Getting Started"
+        "Team"        = "DevOps"
     }
 }
 ```
