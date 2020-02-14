@@ -78,7 +78,7 @@ The following example uses a resource block to provision a new Azure **resource 
 ```hcl
 resource "azurerm_resource_group" "rg" {
     name     = "myTFResourceGroup"
-    location = "eastus"
+    location = "westus"
 }
 ```
 
@@ -101,7 +101,7 @@ provider "azurerm" {
 # Create a new resource group
 resource "azurerm_resource_group" "rg" {
     name     = "myTFResourceGroup"
-    location = "eastus"
+    location = "westus"
 }
 
 ```
