@@ -71,7 +71,7 @@ Terraform will perform the following actions:
   # azurerm_resource_group.rg will be created
   + resource "azurerm_resource_group" "rg" {
       + id       = (known after apply)
-      + location = "westus2"
+      + location = "westus"
       + name     = "myTFResourceGroup"
       + tags     = (known after apply)
     }
