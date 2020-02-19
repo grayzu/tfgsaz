@@ -13,7 +13,7 @@ description: |-
 
 Terraform [provisioners](https://www.terraform.io/docs/provisioners/index.html) help you do additional setup and configuration when a resource is created or destroyed. You can move files, run shell scripts, and install software.
 
-Provisioners are not intended to maintain desired state and configuration for existing resources. For that purpose, you should use one of the many tools for configuration management, such as [Chef](https://www.chef.io/chef/), [Ansible](https://www.ansible.com/), or PowerShell [Desired State Configuration](https://docs.microsoft.com/en-us/powershell/dsc/overview/overview). (Terraform includes a [chef](https://www.terraform.io/docs/provisioners/chef.html) provisioner.)
+Provisioners are not intended to maintain desired state and configuration for existing resources. For that purpose, you should use one of the many tools for configuration management, such as [Chef](https://www.chef.io/chef/), [Ansible](https://www.ansible.com/), or [PowerShell Desired State Configuration](https://docs.microsoft.com/en-us/powershell/scripting/dsc/overview/overview?view=powershell-7). (Terraform includes a [chef](https://www.terraform.io/docs/provisioners/chef.html) provisioner.)
 
 An imaged-based infrastructure, such as images created with [Packer](https://www.packer.io), can eliminate much of the need to configure resources when they are created. In this common scenario, Terraform is used to provision infrastructure based on a custom image. The image is managed as code.
 
@@ -34,8 +34,9 @@ resource "azurerm_virtual_machine" "vm" {
     provisioner "file" {
         connection {
             type     = "ssh"
-            user     = "${var.admin_username}"
-            password = "${var.admin_password}"
+            host     = azurerm_public_ip.publicip.ip_address
+            user     = var.admin_username
+            password = var.admin_password
         }
 
         source      = "newfile.txt"
@@ -45,8 +46,9 @@ resource "azurerm_virtual_machine" "vm" {
     provisioner "remote-exec" {
         connection {
             type     = "ssh"
-            user     = "${var.admin_username}"
-            password = "${var.admin_password}"
+            host     = azurerm_public_ip.publicip.ip_address
+            user     = var.admin_username
+            password = var.admin_password
         }
 
         inline = [
@@ -199,16 +201,21 @@ resource "azurerm_subnet" "subnet" {
 # Create public IP
 resource "azurerm_public_ip" "publicip" {
     name                         = "${var.resource_prefix}TFPublicIP"
-    location                     = "${var.location}"
-    resource_group_name          = "${azurerm_resource_group.rg.name}"
+    location                     = var.location
+    resource_group_name          = azurerm_resource_group.rg.name
     public_ip_address_allocation = "dynamic"
     }
+
+data "azurerm_public_ip" "publicip" {
+  name                = azurerm_public_ip.publicip.name
+  resource_group_name = azurerm_resource_group.rg.name
+}
 
 # Create Network Security Group and rule
 resource "azurerm_network_security_group" "nsg" {
     name                = "${var.resource_prefix}TFNSG"
-    location            = "${var.location}"
-    resource_group_name = "${azurerm_resource_group.rg.name}"
+    location            = var.location
+    resource_group_name = azurerm_resource_group.rg.name
 
     security_rule {
         name                       = "SSH"
@@ -226,24 +233,24 @@ resource "azurerm_network_security_group" "nsg" {
 # Create network interface
 resource "azurerm_network_interface" "nic" {
     name                      = "${var.resource_prefix}NIC"
-    location                  = "${var.location}"
-    resource_group_name       = "${azurerm_resource_group.rg.name}"
-    network_security_group_id = "${azurerm_network_security_group.nsg.id}"
+    location                  = var.location
+    resource_group_name       = azurerm_resource_group.rg.name
+    network_security_group_id = azurerm_network_security_group.nsg.id
 
     ip_configuration {
-        name                          = "${var.resource_prefix}NICConfg"
-        subnet_id                     = "${azurerm_subnet.subnet.id}"
-        private_ip_address_allocation = "dynamic"
-        public_ip_address_id          = "${azurerm_public_ip.publicip.id}"
-    }
+      name                          = "${var.resource_prefix}NICConfg"
+      subnet_id                     = azurerm_subnet.subnet.id
+      private_ip_address_allocation = "dynamic"
+      public_ip_address_id          = azurerm_public_ip.publicip.id
+  }
 }
 
 # Create a Linux virtual machine
 resource "azurerm_virtual_machine" "vm" {
     name                  = "${var.resource_prefix}TFVM"
-    location              = "${var.location}"
-    resource_group_name   = "${azurerm_resource_group.rg.name}"
-    network_interface_ids = ["${azurerm_network_interface.nic.id}"]
+    location              = var.location
+    resource_group_name   = azurerm_resource_group.rg.name
+    network_interface_ids = [azurerm_network_interface.nic.id]
     vm_size               = "Standard_DS1_v2"
 
     storage_os_disk {
@@ -262,8 +269,8 @@ resource "azurerm_virtual_machine" "vm" {
 
     os_profile {
         computer_name  = "${var.resource_prefix}TFVM"
-        admin_username = "${var.admin_username}"
-        admin_password = "${var.admin_password}"
+        admin_username = var.admin_username
+        admin_password = var.admin_password
     }
 
     os_profile_linux_config {
@@ -273,8 +280,9 @@ resource "azurerm_virtual_machine" "vm" {
     provisioner "file" {
         connection {
             type = "ssh"
-            user = "${var.admin_username}"
-            password = "${var.admin_password}"
+            host     = azurerm_public_ip.publicip.ip_address
+            user     = var.admin_username
+            password = var.admin_password
         }
 
         source = "newfile.txt"
@@ -284,8 +292,9 @@ resource "azurerm_virtual_machine" "vm" {
     provisioner "remote-exec" {
         connection {
             type = "ssh"
-            user     = "${var.admin_username}"
-            password = "${var.admin_password}"
+            host     = azurerm_public_ip.publicip.ip_address
+            user     = var.admin_username
+            password = var.admin_password
         }
 
         inline = [
