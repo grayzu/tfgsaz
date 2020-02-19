@@ -25,25 +25,25 @@ Up to now we have embedded all necessary values as literals. We're going to add 
 Create another file `variables.tf` with the following contents:
 
 ```hcl
-vvariable "location" {}
+variable "location" {}
 
 variable "admin_username" {
-    type = "string"
+    type = string
     description = "Administrator user name for virtual machine"
 }
 
 variable "admin_password" {
-    type = "string"
+    type = string
     description = "Password must meet Azure complexity requirements"
 }
 
 variable "prefix" {
-    type = "string"
+    type = string
     default = "my"
 }
 
 variable "tags" {
-    type = "map"
+    type = map
 
     default = {
         Environment = "Terraform Getting Started"
@@ -53,7 +53,7 @@ variable "tags" {
 
 variable "sku" {
     default = {
-        westus = "16.04-LTS"
+        westus2 = "16.04-LTS"
         eastus = "18.04-LTS"
     }
 }
@@ -174,7 +174,7 @@ A _map_ value is a lookup table of string name = value pairs. We are going to us
 
 ```hcl
 variable "tags" {
-    type = "map"
+    type = map
     default = {
         Environment = "Terraform Getting Started"
         Dept = "DevOps"
@@ -183,7 +183,7 @@ variable "tags" {
 
 variable "sku" {
     default = {
-        westus = "16.04-LTS"
+        westus2 = "16.04-LTS"
         eastus = "18.04-LTS"
     }
 ```
@@ -360,22 +360,22 @@ output "os_sku" {
 variable "location" {}
 
 variable "admin_username" {
-    type = "string"
+    type = string
     description = "Administrator user name for virtual machine"
 }
 
 variable "admin_password" {
-    type = "string"
+    type = string
     description = "Password must meet Azure complexity requirements"
 }
 
 variable "prefix" {
-    type = "string"
+    type = string
     default = "my"
 }
 
 variable "tags" {
-    type = "map"
+    type = map
 
     default = {
         Environment = "Terraform Getting Started"
@@ -385,10 +385,11 @@ variable "tags" {
 
 variable "sku" {
     default = {
-        westus = "16.04-LTS"
+        westus2 = "16.04-LTS"
         eastus = "18.04-LTS"
     }
 }
+
 ```
 
 ## terraform.tfvars
