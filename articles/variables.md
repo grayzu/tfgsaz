@@ -46,8 +46,8 @@ variable "tags" {
     type = "map"
 
     default = {
-        Environment = "Terraform GS"
-        Dept = "Engineering"
+        Environment = "Terraform Getting Started"
+        Dept = "DevOps"
   }
 }
 
@@ -129,8 +129,11 @@ List and map type variables must be populated via one of the other mechanisms.
 If you execute `terraform apply` with certain variables unspecified,
 Terraform will ask you to input their values interactively. These
 values are not saved, but this provides a convenient workflow when getting
-started with Terraform. UI Input is not recommended for everyday use of
+started with Terraform. UI input is not recommended for everyday use of
 Terraform.
+
+-> **Note**: In Terraform versions 0.11 and earlier, UI input is only supported for string variables. List and map variables must be populated via one of the other mechanisms. Terraform 0.12 introduces the ability to populate complex variable types from the UI prompt.
+
 
 ### Variable Defaults
 
@@ -173,8 +176,8 @@ A _map_ value is a lookup table of string name = value pairs. We are going to us
 variable "tags" {
     type = "map"
     default = {
-        Environment = "Terraform GS"
-        Dept = "Engineering"
+        Environment = "Terraform Getting Started"
+        Dept = "DevOps"
     }
 }
 
@@ -191,7 +194,7 @@ demonstrates both.
 
 A map is a collection of string values grouped together. When it is necessary to group different kinds of values, for example strings, bool values, and/or numbers, you will need to use an [object](https://www.terraform.io/docs/configuration/types.html#object-) type. 
 
-Lettuce imagine that you have a need to vary the virtual machine sku based on the region where the vm will be created. Modify the virtual machine block as follows:
+Let us imagine that you have a need to vary the virtual machine sku based on the region where the vm will be created. Modify the virtual machine block as follows:
 
 ```hcl
 storage_image_reference {
@@ -219,7 +222,7 @@ We set defaults above, but maps can also be set using the `-var` and
 `-var-file` values. For example:
 
 ```shell
-$ terraform apply -var 'tags={ Environment = "sandbox", Dept = "engineering" }'
+$ terraform apply -var 'tags={ Environment = "Terraform Getting Started", Dept = "DevOps" }'
 # ...
 ```
 
@@ -375,8 +378,8 @@ variable "tags" {
     type = "map"
 
     default = {
-        Environment = "Terraform GS"
-        Dept = "Engineering"
+        Environment = "Terraform Getting Started"
+        Dept = "DevOps"
   }
 }
 
