@@ -70,7 +70,7 @@ Although Terraform Cloud can act as a standard remote backend to support Terrafo
 - A VCS-driven workflow, in which it automatically queues plans whenever changes are committed to your configuration's VCS repo.
 - An API-driven workflow, in which a CI pipeline or other automated tool can upload configurations directly.
 
-For a hands-on introduction to Terraform Cloud, [follow the Terraform Cloud getting started guide](https://www.terraform.io/docs/enterprise/getting-started/index.html).
+For a hands-on introduction to Terraform Cloud, [follow the Terraform Cloud getting started guide](https://learn.hashicorp.com/terraform/cloud-gettingstarted/tfc_overview).
 
 
 ### How to Store State Remotely in Terraform Cloud
@@ -79,7 +79,7 @@ First, we'll use Terraform Cloud as our backend. Terraform Cloud
 offers free remote state management. Terraform Cloud is the recommended best practice for remote state storage.
 
 If you don't have an account, please [sign up here](https://app.terraform.io/signup) for this guide.
-For more information on Terraform Cloud, [view our getting started guide](https://learn.hashicorp.com/terraform/cloud/tf_cloud_gettingstarted.html)
+For more information on Terraform Cloud, [view our getting started guide](https://learn.hashicorp.com/terraform/cloud-gettingstarted/tfc_overview)
 First, configure the backend in your configuration with your own organization and workspace names:
 
 ```hcl
@@ -120,5 +120,3 @@ off your local disk. Remote state is loaded only in memory when it is used.
 If you want to move back to local state, you can remove the backend configuration
 block from your configuration and run `terraform init` again. Terraform will
 once again ask if you want to migrate your state back to local.
-
---> Terraform Cloud content originally appeared on [the Terraform website documentation](https://github.com/hashicorp/terraform/blob/master/website/intro/getting-started/remote.html.markdown).
