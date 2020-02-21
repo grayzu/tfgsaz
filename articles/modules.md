@@ -84,7 +84,7 @@ module "compute" {
   remote_port    = "22"
   vm_os_simple   = "UbuntuServer"
   vm_size        = var.vm_size[var.environment]
-  public_ip_dns  = ["zzdns"]
+  public_ip_dns  = ["zzdns123"]  #update this with a unique address if needed
 }
 ```
 
@@ -176,6 +176,8 @@ Plan: 11 to add, 0 to change, 0 to destroy.
 After several minutes and many log messages about all of the resources
 being created, you'll have a virtual machine up and running. These two modules encapsulate all of the resources we used in our previous configuration, plus they have the capability to create much more complex infrastructure than our simple example of creating one vm.
 
+-> **Note**: You may need to generate an SSH key. You can follow instructions to do so [here.](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+
 ## Module Outputs
 
 Most modules also output key information about status, the names and IDs of resources created, etc. Unlike the output variables we discussed earlier, module outputs are not automatically echoed to the command line output. Module outputs are referenced as inputs to other modules or resources, and you can echo outputs to the UI or to a file using output variables in the configuration or the `local-exec` provisioner.
@@ -226,7 +228,7 @@ Terraform will perform the following actions:
 
 ...
 
-Plan: 0 to add, 0 to change, 10 to destroy.
+Plan: 0 to add, 0 to change, 11 to destroy.
 
 Do you really want to destroy all resources?
 ```
@@ -237,10 +239,8 @@ Type `yes` to confirm and, after a few minutes and even more log output,
 all of the resources should be destroyed:
 
 ```shell
-Destroy complete! Resources: 10 destroyed.
+Destroy complete! Resources: 11 destroyed.
 ```
-
-[COMMENT]: # ( If 11 resources were added, why were only 10 destroyed? Please make consistent. )
 
 With all of the resources destroyed, you can delete the configuration file
 you created above.
