@@ -34,7 +34,7 @@ Terraform will perform the following actions:
 
   # azurerm_resource_group.rg will be destroyed
   - resource "azurerm_resource_group" "rg" {
-      - id       = "/subscriptions/c5a42fec-6a86-43df-866b-7a6845daaa98/resourceGroups/myTFResourceGroup" -> null
+      - id       = "/subscriptions/<subscription-id>/resourceGroups/myTFResourceGroup" -> null
       - location = "westus" -> null
       - name     = "myTFResourceGroup" -> null
       - tags     = {
